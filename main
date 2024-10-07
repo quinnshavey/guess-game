@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+#include <random>
+using namespace std;
+
+int main()
+{
+    random_device myEngine;
+    uniform_int_distribution<int> randomInt(0, 1000);
+    int rand, inp, guessCt;
+    string again;
+    rand = randomInt(myEngine);
+    guessCt = 0;
+    cout << "Guess a number between 1 and 1000, or 0 to quit: " << endl;
+    cin >> inp;
+    while (inp != 0) {
+        guessCt++;
+        if (inp > rand) {
+            cout << "Your guess is TOO BIG" << endl;
+            cout << "Guess a number between 1 and 1000, or 0 to quit: " << endl;
+            cin >> inp;
+        }
+        else if (inp < rand) {
+            cout << "Your guess is TOO SMALL" << endl;
+            cout << "Guess a number between 1 and 1000, or 0 to quit: " << endl;
+            cin >> inp;
+        }
+        else if (inp == rand) {
+            cout << "Congratulations! You got it correct in " << guessCt << " guesses!" << endl;
+            cout << endl << "Would you like to play again? Y/N" << endl;
+            cin >> again;
+            if (again == "Y" || again == "y") {
+                rand = randomInt(myEngine);
+                cout << "Guess a number between 1 and 1000, or 0 to quit: " << endl;
+                cin >> inp;
+                guessCt = 0;
+            }
+            else {
+                inp = 0;
+                break;
+            }
+
+        }
+    }
+}
