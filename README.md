@@ -1,0 +1,1 @@
+Simple Guess Game that requires the user to input a number and then depending on whether it is bigger or smaller than the chosen number, guess another number closer to the answer. Keeps going until the user wants to quit.
